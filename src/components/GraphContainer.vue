@@ -1,19 +1,25 @@
 <template>
   <div class="hello">
     <h1>Effect </h1>
-    <div>
-    
+    <div class="select-effect">
+    Выберите эффект: 
      <select v-model="selectedEffect">
         <option v-for="option in preset" v-bind:value="option">{{option.name}}</option>
-    </select>
-    {{selectedEffect}}
+    </select>!
+    Нажмите play или выберите время на видео
 </div>
 
     <video ref="video_object" src="/static/sample.mp4" controls="true" :style="workStyle"></video>
     <canvas ref="canvas_origin" :style="workStyle"></canvas>
     <canvas ref="canvas_new" :style="workStyle"></canvas>
+  <div class="comment" v-if="selectedEffect">
+   
+{{selectedEffect.comment}}
     
+  
+    </div>  
   </div>
+  
 </template>
 
 <script>
@@ -150,6 +156,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.select-effect{
+  padding: 20px;
+}
+.comment{
+  padding: 20px;
+}
 h3 {
   margin: 40px 0 0;
 }

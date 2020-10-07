@@ -21,6 +21,7 @@ export default class Glitch {
         let imageData = ctx.getImageData(0, 0,canvas.width,canvas.height);
         let context =ctx; 
         let fontSize = 20;
+        let timeRepeat = 3;
         context.font = this.getFont(fontSize);
         let textPromo = "Create Glitch effect";
         var metrics = context.measureText(textPromo);
@@ -28,7 +29,7 @@ export default class Glitch {
         fontSize = Math.round(canvas.width / textWidth* fontSize)
         context.font = this.getFont(fontSize);
         
-        context.fillText(textPromo, 0, fontSize+time/10*(canvas.height-fontSize));
+        context.fillText(textPromo, 0, fontSize+(time/timeRepeat - Math.floor(time/timeRepeat))*(canvas.height-fontSize));
         
     }
     getFont(fontSize){
